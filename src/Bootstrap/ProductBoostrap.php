@@ -363,13 +363,6 @@ class ProductBoostrap extends AbstractBootstrap
                     'en-GB' => self::LOREM_IPSUM_EN,
                     'zh-CN' => self::LOREM_IPSUM_ZH,
                 ]),
-                'manufacturer' => [
-                    'id' => '019787c4feab7373994867e7a55896b5',
-                    'name' => $this->translationHelper->adjustTranslations([
-                        'zh-CN' => 'AllinCart 技术部',
-                        'en-GB' => 'AllinCart Technology Department',
-                    ]),
-                ],
                 'media' => [
                     [
                         'id' => '019787c4feab7373994867e7a55896b5',
