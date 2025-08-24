@@ -249,7 +249,7 @@ class PromotionBoostrap extends AbstractBootstrap
             [
                 'id' => '01942d8530bc724ebb8beb6300ef750e',
                 'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '会员专享',
+                    'zh-CN' => '客户专享',
                     'en-GB' => 'Members Exclusive',
                 ]),
                 'active' => true,
