@@ -81,11 +81,11 @@ class PromotionBoostrap extends AbstractBootstrap
                 'validFrom' => new \DateTime(),
                 'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
                 'code' => '100000000000',
-                'salesChannels' => [
+                'channels' => [
                     [
                         'id' => '01969fa0ce3b7612a136b7b0b7f9f6fe',
                         'priority' => 1,
-                        'salesChannelId' => $this->getStorefrontSalesChannel(),
+                        'channelId' => $this->getFrontendChannel(),
                     ],
                 ],
                 'useCodes' => true,
@@ -345,13 +345,13 @@ class PromotionBoostrap extends AbstractBootstrap
         ];
     }
 
-    private function getStorefrontSalesChannel(): string
+    private function getFrontendChannel(): string
     {
         $result = $this->connection->fetchOne('
             SELECT LOWER(HEX(`id`))
-            FROM `sales_channel`
-            WHERE `type_id` = :storefront_type
-        ', ['storefront_type' => Uuid::fromHexToBytes(Defaults::SALES_CHANNEL_TYPE_STOREFRONT)]);
+            FROM `channel`
+            WHERE `type_id` = :fontend_type
+        ', ['fontend_type' => Uuid::fromHexToBytes(Defaults::CHANNEL_TYPE_FRONTEND)]);
 
         if ($result === false) {
             throw new \RuntimeException('No tax found, please make sure that basic data is available by running the migrations.');

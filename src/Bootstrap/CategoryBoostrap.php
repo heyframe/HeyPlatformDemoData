@@ -15,7 +15,7 @@ use HeyFrame\Core\Framework\DataAbstractionLayer\EntityRepository;
 use HeyFrame\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use HeyFrame\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use HeyFrame\Core\Framework\Uuid\Uuid;
-use HeyFrame\Core\System\SalesChannel\SalesChannelCollection;
+use HeyFrame\Core\System\Channel\ChannelCollection;
 
 /**
  * @internal
@@ -28,9 +28,9 @@ class CategoryBoostrap extends AbstractBootstrap
     private EntityRepository $categoryRepository;
 
     /**
-     * @var EntityRepository<SalesChannelCollection>
+     * @var EntityRepository<ChannelCollection>
      */
-    private EntityRepository $salesChannelRepository;
+    private EntityRepository $channelRepository;
 
     private Connection $connection;
 
@@ -40,7 +40,7 @@ class CategoryBoostrap extends AbstractBootstrap
     {
         $this->connection = $this->container->get(Connection::class);
         $this->categoryRepository = $this->container->get('category.repository');
-        $this->salesChannelRepository = $this->container->get('sales_channel.repository');
+        $this->channelRepository = $this->container->get('channel.repository');
         $this->translationHelper = new TranslationHelper($this->connection);
     }
 
@@ -54,7 +54,7 @@ class CategoryBoostrap extends AbstractBootstrap
         return [
             [
                 'id' => $this->getRootCategoryId(),
-                'cmsPageId' => '695477e02ef643e5a016b83ed4cdf63a',
+                //                'cmsPageId' => '695477e02ef643e5a016b83ed4cdf63a',
                 'active' => true,
                 'displayNestedProducts' => true,
                 'visible' => true,
@@ -126,9 +126,9 @@ class CategoryBoostrap extends AbstractBootstrap
                         'visible' => false,
                         'type' => 'page',
                         'afterCategoryId' => '01969bac78b670c4ac0b7e77c7bdbe03',
-                        'footerSalesChannels' => [
+                        'footerChannels' => [
                             [
-                                'id' => $this->getStorefrontSalesChannel(),
+                                'id' => $this->getFrontendChannel(),
                             ],
                         ],
                         'name' => $this->translationHelper->adjustTranslations([
@@ -295,9 +295,9 @@ class CategoryBoostrap extends AbstractBootstrap
                             'zh-CN' => '页脚服务导航',
                             'en-GB' => 'Footer service navigation',
                         ]),
-                        'serviceSalesChannels' => [
+                        'serviceChannels' => [
                             [
-                                'id' => $this->getStorefrontSalesChannel(),
+                                'id' => $this->getFrontendChannel(),
                             ],
                         ],
                         'children' => [
@@ -357,9 +357,9 @@ class CategoryBoostrap extends AbstractBootstrap
             ],
         ], $context);
 
-        $this->salesChannelRepository->upsert([
+        $this->channelRepository->upsert([
             [
-                'id' => $this->getStorefrontSalesChannel(),
+                'id' => $this->getFrontendChannel(),
                 'footerCategoryId' => null,
                 'serviceCategoryId' => null,
             ],
@@ -409,13 +409,13 @@ class CategoryBoostrap extends AbstractBootstrap
         return $ids;
     }
 
-    private function getStorefrontSalesChannel(): string
+    private function getFrontendChannel(): string
     {
         $result = $this->connection->fetchOne('
             SELECT LOWER(HEX(`id`))
-            FROM `sales_channel`
-            WHERE `type_id` = :storefront_type
-        ', ['storefront_type' => Uuid::fromHexToBytes(Defaults::SALES_CHANNEL_TYPE_STOREFRONT)]);
+            FROM `channel`
+            WHERE `type_id` = :fontend_type
+        ', ['fontend_type' => Uuid::fromHexToBytes(Defaults::CHANNEL_TYPE_FRONTEND)]);
 
         if ($result === false) {
             throw new \RuntimeException('No tax found, please make sure that basic data is available by running the migrations.');
@@ -446,7 +446,7 @@ class CategoryBoostrap extends AbstractBootstrap
         }
 
         // BC support for older shopware versions - \Shopware\Core\Migration\V6_4\Migration1645019769UpdateCmsPageTranslation changed the translations
-        $id = $this->getCmsPageIdByName('Default category layout');
+        $id = $this->getCmsPageIdByName('默认列表布局');
 
         if ($id !== null) {
             return $id;

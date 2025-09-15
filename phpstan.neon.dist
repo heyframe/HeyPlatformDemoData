@@ -47,7 +47,7 @@ rules:
     - HeyFrame\Core\DevOps\StaticAnalyze\PHPStan\Rules\DecorationPatternRule
     - HeyFrame\Core\DevOps\StaticAnalyze\PHPStan\Rules\Migration\AddColumnRule
     - HeyFrame\Core\DevOps\StaticAnalyze\PHPStan\Rules\Migration\NoAfterStatementRule
-    - HeyFrame\Core\DevOps\StaticAnalyze\PHPStan\Rules\NoNewRequestInStorefrontRule
+    - HeyFrame\Core\DevOps\StaticAnalyze\PHPStan\Rules\NoNewRequestInFrontendRule
 
     # rules from https://github.com/symplify/phpstan-rules
     # domain

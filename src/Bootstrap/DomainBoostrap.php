@@ -12,7 +12,7 @@ use HeyFrame\Core\Framework\DataAbstractionLayer\EntityRepository;
 use HeyFrame\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use HeyFrame\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use HeyFrame\Core\Framework\Uuid\Uuid;
-use HeyFrame\Core\System\SalesChannel\Aggregate\SalesChannelDomain\SalesChannelDomainCollection;
+use HeyFrame\Core\System\Channel\Aggregate\ChannelDomain\ChannelDomainCollection;
 
 /**
  * @internal
@@ -24,25 +24,25 @@ class DomainBoostrap extends AbstractBootstrap
     private DbHelper $dbHelper;
 
     /**
-     * @var EntityRepository<SalesChannelDomainCollection>
+     * @var EntityRepository<ChannelDomainCollection>
      */
-    private EntityRepository $salesChannelDomainRepository;
+    private EntityRepository $channelDomainRepository;
 
     public function injectServices(): void
     {
         $this->connection = $this->container->get(Connection::class);
         $this->dbHelper = new DbHelper($this->connection);
-        $this->salesChannelDomainRepository = $this->container->get('sales_channel_domain.repository');
+        $this->channelDomainRepository = $this->container->get('channel_domain.repository');
     }
 
     public function install(): void
     {
-        $salesChannelId = $this->getStorefrontSalesChannel();
+        $channelId = $this->getFrontendChannel();
         $context = new Context(new SystemSource());
         $criteria = new Criteria();
-        $criteria->addFilter(new EqualsFilter('salesChannelId', $salesChannelId));
-        /** @var SalesChannelDomainCollection $domains */
-        $domains = $this->salesChannelDomainRepository->search($criteria, $context)->getEntities();
+        $criteria->addFilter(new EqualsFilter('channelId', $channelId));
+        /** @var ChannelDomainCollection $domains */
+        $domains = $this->channelDomainRepository->search($criteria, $context)->getEntities();
 
         if (\count($domains) === 0) {
             return;
@@ -77,10 +77,10 @@ class DomainBoostrap extends AbstractBootstrap
         if ($newDomainData !== null) {
             $domainUpsertData = \array_merge([
                 'id' => '0195f2a18537713090842c238164d23e',
-                'salesChannelId' => $salesChannelId,
+                'channelId' => $channelId,
             ], $newDomainData);
 
-            $this->salesChannelDomainRepository->upsert([$domainUpsertData], $context);
+            $this->channelDomainRepository->upsert([$domainUpsertData], $context);
         }
     }
 
@@ -94,7 +94,7 @@ class DomainBoostrap extends AbstractBootstrap
             return;
         }
         $context = $this->installContext->getContext();
-        $this->salesChannelDomainRepository->delete([
+        $this->channelDomainRepository->delete([
             [
                 'id' => '0195f2a18537713090842c238164d23e',
             ],
@@ -109,13 +109,13 @@ class DomainBoostrap extends AbstractBootstrap
     {
     }
 
-    private function getStorefrontSalesChannel(): string
+    private function getFrontendChannel(): string
     {
         $result = $this->connection->fetchOne('
             SELECT LOWER(HEX(`id`))
-            FROM `sales_channel`
-            WHERE `type_id` = :storefront_type
-        ', ['storefront_type' => Uuid::fromHexToBytes(Defaults::SALES_CHANNEL_TYPE_STOREFRONT)]);
+            FROM `channel`
+            WHERE `type_id` = :fontend_type
+        ', ['fontend_type' => Uuid::fromHexToBytes(Defaults::CHANNEL_TYPE_FRONTEND)]);
 
         if ($result === false) {
             throw new \RuntimeException('No tax found, please make sure that basic data is available by running the migrations.');

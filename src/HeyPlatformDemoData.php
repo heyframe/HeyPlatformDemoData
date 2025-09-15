@@ -9,7 +9,6 @@ use Hey\PlatformDemoData\Bootstrap\CustomerBoostrap;
 use Hey\PlatformDemoData\Bootstrap\DomainBoostrap;
 use Hey\PlatformDemoData\Bootstrap\MediaBoostrap;
 use Hey\PlatformDemoData\Bootstrap\ProductBoostrap;
-use Hey\PlatformDemoData\Bootstrap\ProductManufacturerBoostrap;
 use Hey\PlatformDemoData\Bootstrap\PromotionBoostrap;
 use Hey\PlatformDemoData\Bootstrap\PropertyBoostrap;
 use Hey\PlatformDemoData\Bootstrap\RuleBoostrap;
@@ -46,8 +45,8 @@ class HeyPlatformDemoData extends Plugin
         \assert($this->container instanceof ContainerInterface, 'Container is not set yet, please call setContainer() before calling boot(), see `platform/Core/Kernel.php:186`.');
         /** @var AbstractBootstrap[] $bootstrapper */
         $bootstrapper = [
-            new MediaBoostrap(),
-            new CmsPageBoostrap(),
+            //            new MediaBoostrap(),
+            //            new CmsPageBoostrap(),
             new DomainBoostrap(),
             new CategoryBoostrap(),
             new CustomerBoostrap(),

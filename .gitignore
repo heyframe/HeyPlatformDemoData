@@ -8,8 +8,8 @@ phpstan-report.json
 composer.lock
 
 node_modules
-/src/Resources/app/storefront/test/e2e/cypress/results/
-/src/Resources/app/storefront/test/app/
+/src/Resources/app/fontend/test/e2e/cypress/results/
+/src/Resources/app/fontend/test/app/
 
 /src/Resources/app/administration/test/e2e/cypress/results/
 /src/Resources/app/administration/test/app/
