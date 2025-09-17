@@ -74,14 +74,10 @@ class ProductBoostrap extends AbstractBootstrap
                 'productNumber' => 'SWDEMO10002',
                 'active' => true,
                 'stock' => 10,
-                'isCloseout' => true,
-                'releaseDate' => new \DateTimeImmutable(),
-                'displayInListing' => true,
                 'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '超级游戏笔记本电脑',
-                    'en-GB' => 'High-end gaming laptop',
+                    'zh-CN' => 'HeyFrame 系统演示数据',
+                    'en-GB' => 'HeyFrame Demo Data',
                 ]),
-
                 'categories' => [
                     [
                         'id' => '77b959cf66de4c1590c7f9b7da3982f3',
@@ -102,6 +98,40 @@ class ProductBoostrap extends AbstractBootstrap
                 'visibilities' => [
                     [
                         'id' => '69cd1be4be004944b923ddbe571e96f5',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199527b924070a2b8e6614df8e09675',
+                'productNumber' => 'SWDEMO10003',
+                'active' => true,
+                'stock' => 10,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => 'HeyFrame 系统演示数据',
+                    'en-GB' => 'Membership',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '77b959cf66de4c1590c7f9b7da3982f3',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 100,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'properties' => [
+                    [
+                        'id' => '2bfd278e87204807a890da4a3e81dd90',
+                    ],
+                    [
+                        'id' => '52454db2adf942b2ac079a296f454a10',
+                    ],
+                ],
+                'visibilities' => [
+                    [
+                        'id' => '0199551657467130990539a57893db48',
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],

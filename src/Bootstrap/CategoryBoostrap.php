@@ -60,8 +60,8 @@ class CategoryBoostrap extends AbstractBootstrap
                 'visible' => true,
                 'type' => 'page',
                 'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => 'HeyFrame 电子产品商城演示系统',
-                    'en-GB' => 'HeyFrame Electronics Products Mall Demo System',
+                    'zh-CN' => 'HeyFrame PHP 企业级全栈开发框架演示系统',
+                    'en-GB' => 'HeyFrame Demo System for PHP Enterprise Full-Stack Development Framework',
                 ]),
                 'children' => [
                     [
@@ -72,9 +72,10 @@ class CategoryBoostrap extends AbstractBootstrap
                         'visible' => true,
                         'type' => 'page',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '手机',
-                            'en-GB' => 'Mobile Phones',
+                            'zh-CN' => '扩展',
+                            'en-GB' => 'Extensions',
                         ]),
+                        'children' => (new PeripheralsCategoryL2($cmsPageId, $this->translationHelper))->getPayload(),
                     ],
                     [
                         'id' => 'a515ae260223466f8e37471d279e6406',
@@ -85,8 +86,8 @@ class CategoryBoostrap extends AbstractBootstrap
                         'type' => 'page',
                         'afterCategoryId' => '77b959cf66de4c1590c7f9b7da3982f3',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '电脑',
-                            'en-GB' => 'Computers',
+                            'zh-CN' => '主题',
+                            'en-GB' => 'Themes',
                         ]),
                         'children' => (new ComputersCategoryL2($cmsPageId, $this->translationHelper))->getPayload(),
                     ],
@@ -99,24 +100,10 @@ class CategoryBoostrap extends AbstractBootstrap
                         'type' => 'page',
                         'afterCategoryId' => 'a515ae260223466f8e37471d279e6406',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '音频设备',
-                            'en-GB' => 'Audio Devices',
+                            'zh-CN' => '小程序',
+                            'en-GB' => 'Mini Program',
                         ]),
                         'children' => (new AudioCategoryL2($cmsPageId, $this->translationHelper))->getPayload(),
-                    ],
-                    [
-                        'id' => '01969bac78b670c4ac0b7e77c7bdbe03',
-                        'cmsPageId' => $cmsPageId,
-                        'active' => true,
-                        'displayNestedProducts' => true,
-                        'visible' => true,
-                        'type' => 'page',
-                        'afterCategoryId' => '01969ba7567770ccb426156302a1c187',
-                        'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '外设及存储',
-                            'en-GB' => 'Peripherals & Storage',
-                        ]),
-                        'children' => (new PeripheralsCategoryL2($cmsPageId, $this->translationHelper))->getPayload(),
                     ],
                     [
                         'id' => '01942ce041de71cfbb175364b166dd4d',
@@ -125,7 +112,7 @@ class CategoryBoostrap extends AbstractBootstrap
                         'displayNestedProducts' => true,
                         'visible' => false,
                         'type' => 'page',
-                        'afterCategoryId' => '01969bac78b670c4ac0b7e77c7bdbe03',
+                        'afterCategoryId' => '01969ba7567770ccb426156302a1c187',
                         'footerChannels' => [
                             [
                                 'id' => $this->getFrontendChannel(),

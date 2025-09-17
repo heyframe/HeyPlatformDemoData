@@ -4,9 +4,12 @@ namespace Hey\PlatformDemoData\Bootstrap;
 
 use Doctrine\DBAL\Connection;
 use Hey\PlatformDemoData\Helper\TranslationHelper;
+use HeyFrame\Core\Checkout\Promotion\Aggregate\PromotionChannel\PromotionChannelCollection;
 use HeyFrame\Core\Checkout\Promotion\PromotionCollection;
 use HeyFrame\Core\Defaults;
 use HeyFrame\Core\Framework\DataAbstractionLayer\EntityRepository;
+use HeyFrame\Core\Framework\DataAbstractionLayer\Search\Criteria;
+use HeyFrame\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsAnyFilter;
 use HeyFrame\Core\Framework\Uuid\Uuid;
 
 /**
@@ -23,11 +26,17 @@ class PromotionBoostrap extends AbstractBootstrap
      */
     private EntityRepository $promotionRepository;
 
+    /**
+     * @var EntityRepository<PromotionChannelCollection>
+     */
+    private EntityRepository $promotionChannelRepository;
+
     public function injectServices(): void
     {
         $this->connection = $this->container->get(Connection::class);
         $this->translationHelper = new TranslationHelper($this->connection);
         $this->promotionRepository = $this->container->get('promotion.repository');
+        $this->promotionChannelRepository = $this->container->get('promotion_channel.repository');
     }
 
     public function install(): void
@@ -46,13 +55,30 @@ class PromotionBoostrap extends AbstractBootstrap
         if ($keepUserData) {
             return;
         }
+
         $context = $this->installContext->getContext();
 
-        $ids = array_map(function ($group) {
-            return ['id' => $group['id']];
-        }, $this->getPayload());
+        // 获取 promotion ID 数组
+        $promotionIds = array_map(fn ($group) => $group['id'], $this->getPayload());
 
-        $this->promotionRepository->delete($ids, $context);
+        if (empty($promotionIds)) {
+            return;
+        }
+
+        // 先删除 promotion_channel 关联表数据
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsAnyFilter('promotionId', $promotionIds));
+
+        $promotionChannelIds = $this->promotionChannelRepository->searchIds($criteria, $context);
+
+        $channelIds = array_map(fn ($id) => ['id' => $id], $promotionChannelIds->getIds());
+        if (!empty($channelIds)) {
+            $this->promotionChannelRepository->delete($channelIds, $context);
+        }
+
+        // 再删除 promotion 主表数据
+        $promotionData = array_map(fn ($id) => ['id' => $id], $promotionIds);
+        $this->promotionRepository->delete($promotionData, $context);
     }
 
     public function activate(): void
@@ -88,258 +114,6 @@ class PromotionBoostrap extends AbstractBootstrap
                         'channelId' => $this->getFrontendChannel(),
                     ],
                 ],
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d7f77f473f3b3daaa9d2d4f8339',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '年度大促',
-                    'en-GB' => 'Annual Sale',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '120000000000',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d8047127270989973cf41cc79c4',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '限时闪购',
-                    'en-GB' => 'Flash Sale',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130000000000',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d8047127270989973cf41cc79c4',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '狂欢购物节',
-                    'en-GB' => 'Shopping Festival',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000000',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d8118597099840cfc5a240d6656',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '双倍积分周',
-                    'en-GB' => 'Double Points Week',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000001',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d8188a872568bd6269a08b94403',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '超值优惠',
-                    'en-GB' => 'Super Value Deals',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000002',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d8230d7719ab02b584ed41d3688',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '新年狂欢',
-                    'en-GB' => 'New Year Bonanza',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000003',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d828a3872b39c77b4b247ed45bb',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '黑五预热',
-                    'en-GB' => 'Black Friday Preview',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000004',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d82eb0e704fadcd50b7c7b07e42',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '节日特惠',
-                    'en-GB' => 'Holiday Special',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000005',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d834edd73249a5d2c53d3a97e9e',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '清仓大甩卖',
-                    'en-GB' => 'Clearance Blowout',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000006',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d83ae247225910b189710cb561a',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '秋季大促',
-                    'en-GB' => 'Fall Mega Sale',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000007',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d841c1d704e8a1a3ea6b2b29870',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '秋季大促',
-                    'en-GB' => 'Fall Mega Sale',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000008',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d84612d7230a991164377780132',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '周末惊喜',
-                    'en-GB' => 'Weekend Surprises',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000009',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d84c5ad70699e60da2e5348e3b4',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '购物满减',
-                    'en-GB' => 'Spend and Save',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000010',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d8530bc724ebb8beb6300ef750e',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '客户专享',
-                    'en-GB' => 'Members Exclusive',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000011',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d85897572c38174d1c095a4eea1',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '限量秒杀',
-                    'en-GB' => 'Limited-Time Flash Deals',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000012',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d85d8c871e68f85b90b2e04b467',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '限时抢购',
-                    'en-GB' => 'Limited Time Grab',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000013',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d8628a372a982ac34bae3da7952',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '换季大促',
-                    'en-GB' => 'Seasonal Sale',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000014',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d867c837226a3d422c191d1a73c',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '买一送一',
-                    'en-GB' => 'Buy One Get One Free',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000015',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d86e2d270be9f88f6894db94421',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '春季抢购季',
-                    'en-GB' => 'Spring Sale Season',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000016',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d8743087297bb70275d2009bb37',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '年度回馈',
-                    'en-GB' => 'Annual Thank You Sale',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000017',
-                'useCodes' => true,
-            ],
-            [
-                'id' => '01942d87a230736ba0b4eb84b0213e20',
-                'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '生产商狂欢',
-                    'en-GB' => 'Brand Extravaganza',
-                ]),
-                'active' => true,
-                'validFrom' => new \DateTime(),
-                'validUntil' => (new \DateTime())->add(new \DateInterval('P365D')),
-                'code' => '130010000018',
                 'useCodes' => true,
             ],
         ];
