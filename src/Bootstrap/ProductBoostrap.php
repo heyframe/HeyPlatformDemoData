@@ -75,7 +75,7 @@ class ProductBoostrap extends AbstractBootstrap
                 'active' => true,
                 'stock' => 10,
                 'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => 'HeyFrame 系统演示数据',
+                    'zh-CN' => 'HeyFrame 演示数据',
                     'en-GB' => 'HeyFrame Demo Data',
                 ]),
                 'categories' => [
@@ -109,8 +109,8 @@ class ProductBoostrap extends AbstractBootstrap
                 'active' => true,
                 'stock' => 10,
                 'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => 'HeyFrame 系统演示数据',
-                    'en-GB' => 'Membership',
+                    'zh-CN' => 'HeyFrame 会员',
+                    'en-GB' => 'HeyFrame Membership',
                 ]),
                 'categories' => [
                     [
@@ -137,6 +137,74 @@ class ProductBoostrap extends AbstractBootstrap
                     ],
                 ],
             ],
+            [
+                'id' => '0199555d62ee701b8fe211a6b96a062c',
+                'productNumber' => 'SWDEMO10004',
+                'active' => true,
+                'stock' => 10,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => 'HeyFrame 积分',
+                    'en-GB' => 'HeyFrame Points',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '77b959cf66de4c1590c7f9b7da3982f3',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 100,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'properties' => [
+                    [
+                        'id' => '2bfd278e87204807a890da4a3e81dd90',
+                    ],
+                    [
+                        'id' => '52454db2adf942b2ac079a296f454a10',
+                    ],
+                ],
+                'visibilities' => [
+                    [
+                        'id' => '0199555f51ff7224a209c22271bd021e',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199555fc844736f820726d460521d60',
+                'productNumber' => 'SWDEMO10005',
+                'active' => true,
+                'stock' => 10,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => 'HeyFrame 钱包',
+                    'en-GB' => 'HeyFrame Wallet',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '77b959cf66de4c1590c7f9b7da3982f3',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 100,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'properties' => [
+                    [
+                        'id' => '2bfd278e87204807a890da4a3e81dd90',
+                    ],
+                    [
+                        'id' => '52454db2adf942b2ac079a296f454a10',
+                    ],
+                ],
+                'visibilities' => [
+                    [
+                        'id' => '019955600a9c71bdbc3ccb70932e8ea1',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -149,7 +217,7 @@ class ProductBoostrap extends AbstractBootstrap
         ', ['fontend_type' => Uuid::fromHexToBytes(Defaults::CHANNEL_TYPE_FRONTEND)]);
 
         if ($result === false) {
-            throw new \RuntimeException('No tax found, please make sure that basic data is available by running the migrations.');
+            throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
         }
 
         return (string) $result;
