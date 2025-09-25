@@ -129,7 +129,7 @@ class CmsPageBoostrap extends AbstractBootstrap
                                                 'config' => [
                                                     'content' => [
                                                         'source' => 'static',
-                                                        'value' => '<h2 style="text-align: center; color: #000000">热销商品</h2>
+                                                        'value' => '<h2 style="text-align: center; color: #000000">热销产品</h2>
                                                             <p style="text-align: center; color: #000000">这些是目前最受欢迎的产品，深受用户喜爱，销量持续攀升。无论是品质、价格，还是实用性，都经过市场检验，是众多买家的优选之选。限时优惠、库存有限，赶快下单，不容错过！</p>',
                                                     ],
                                                     'verticalAlign' => [
@@ -332,7 +332,7 @@ class CmsPageBoostrap extends AbstractBootstrap
                                                 'config' => [
                                                     'content' => [
                                                         'source' => 'static',
-                                                        'value' => '<h2 style="text-align: center;">特价商品</h2><hr><p style="text-align: center;">限时特惠，超值精选！这些商品经过精挑细选，现正以优惠价格限时发售。不论是自用还是送礼，都是省钱又实用的好选择，机会难得，赶快抢购！</p>',
+                                                        'value' => '<h2 style="text-align: center;">特价产品</h2><hr><p style="text-align: center;">限时特惠，超值精选！这些产品经过精挑细选，现正以优惠价格限时发售。不论是自用还是送礼，都是省钱又实用的好选择，机会难得，赶快抢购！</p>',
                                                     ],
                                                 ],
                                             ],
