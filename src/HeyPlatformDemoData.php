@@ -52,7 +52,6 @@ class HeyPlatformDemoData extends Plugin
             new CustomerBoostrap(),
             new RuleBoostrap(),
             new PropertyBoostrap(),
-            new PromotionBoostrap(),
             new ProductBoostrap(),
         ];
         foreach ($bootstrapper as $bootstrap) {
