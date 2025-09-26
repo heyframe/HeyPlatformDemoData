@@ -80,7 +80,7 @@ class ProductBoostrap extends AbstractBootstrap
                 ]),
                 'categories' => [
                     [
-                        'id' => '77b959cf66de4c1590c7f9b7da3982f3',
+                        'id' => '01998723f6187075b5cb80b9f517037a',
                     ],
                 ],
                 'price' => [[
@@ -114,7 +114,7 @@ class ProductBoostrap extends AbstractBootstrap
                 ]),
                 'categories' => [
                     [
-                        'id' => '77b959cf66de4c1590c7f9b7da3982f3',
+                        'id' => '01998723f6187075b5cb80b9f517037a',
                     ],
                 ],
                 'price' => [[
@@ -148,7 +148,7 @@ class ProductBoostrap extends AbstractBootstrap
                 ]),
                 'categories' => [
                     [
-                        'id' => '77b959cf66de4c1590c7f9b7da3982f3',
+                        'id' => '01998723f6187075b5cb80b9f517037a',
                     ],
                 ],
                 'price' => [[
@@ -182,7 +182,7 @@ class ProductBoostrap extends AbstractBootstrap
                 ]),
                 'categories' => [
                     [
-                        'id' => '77b959cf66de4c1590c7f9b7da3982f3',
+                        'id' => '01998723f6187075b5cb80b9f517037a',
                     ],
                 ],
                 'price' => [[

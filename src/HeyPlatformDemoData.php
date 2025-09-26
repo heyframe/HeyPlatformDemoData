@@ -4,6 +4,7 @@ namespace Hey\PlatformDemoData;
 
 use Hey\PlatformDemoData\Bootstrap\AbstractBootstrap;
 use Hey\PlatformDemoData\Bootstrap\CategoryBoostrap;
+use Hey\PlatformDemoData\Bootstrap\NavigationBoostrap;
 use Hey\PlatformDemoData\Bootstrap\CmsPageBoostrap;
 use Hey\PlatformDemoData\Bootstrap\CustomerBoostrap;
 use Hey\PlatformDemoData\Bootstrap\DomainBoostrap;
@@ -49,6 +50,7 @@ class HeyPlatformDemoData extends Plugin
             //            new CmsPageBoostrap(),
             new DomainBoostrap(),
             new CategoryBoostrap(),
+            new NavigationBoostrap(),
             new CustomerBoostrap(),
             new RuleBoostrap(),
             new PropertyBoostrap(),
