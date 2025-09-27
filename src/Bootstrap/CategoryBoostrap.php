@@ -16,13 +16,11 @@ class CategoryBoostrap extends AbstractBootstrap
 
     private TranslationHelper $translationHelper;
 
-    private Connection $connection;
-
     public function injectServices(): void
     {
-        $this->connection = $this->container->get(Connection::class);
+        $connection = $this->container->get(Connection::class);
         $this->categoryRepository = $this->container->get('category.repository');
-        $this->translationHelper = new TranslationHelper($this->connection);
+        $this->translationHelper = new TranslationHelper($connection);
     }
 
     public function install(): void

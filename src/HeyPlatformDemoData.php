@@ -4,13 +4,12 @@ namespace Hey\PlatformDemoData;
 
 use Hey\PlatformDemoData\Bootstrap\AbstractBootstrap;
 use Hey\PlatformDemoData\Bootstrap\CategoryBoostrap;
-use Hey\PlatformDemoData\Bootstrap\NavigationBoostrap;
 use Hey\PlatformDemoData\Bootstrap\CmsPageBoostrap;
 use Hey\PlatformDemoData\Bootstrap\CustomerBoostrap;
 use Hey\PlatformDemoData\Bootstrap\DomainBoostrap;
 use Hey\PlatformDemoData\Bootstrap\MediaBoostrap;
+use Hey\PlatformDemoData\Bootstrap\NavigationBoostrap;
 use Hey\PlatformDemoData\Bootstrap\ProductBoostrap;
-use Hey\PlatformDemoData\Bootstrap\PromotionBoostrap;
 use Hey\PlatformDemoData\Bootstrap\PropertyBoostrap;
 use Hey\PlatformDemoData\Bootstrap\RuleBoostrap;
 use HeyFrame\Core\Framework\Plugin;

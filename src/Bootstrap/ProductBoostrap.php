@@ -67,6 +67,7 @@ class ProductBoostrap extends AbstractBootstrap
     public function getPayload(): array
     {
         $fontendChannel = $this->getFrontendChannel();
+        $headlessChannel = $this->getHeadlessChannel();
 
         return [
             [
@@ -99,6 +100,11 @@ class ProductBoostrap extends AbstractBootstrap
                     [
                         'id' => '69cd1be4be004944b923ddbe571e96f5',
                         'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '01998758dbba732b86f28525b45a482e',
+                        'channelId' => $headlessChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
                 ],
@@ -135,6 +141,11 @@ class ProductBoostrap extends AbstractBootstrap
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
+                    [
+                        'id' => '019987590f8972509cdd7a7ab9b02ed5',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
                 ],
             ],
             [
@@ -167,6 +178,11 @@ class ProductBoostrap extends AbstractBootstrap
                     [
                         'id' => '0199555f51ff7224a209c22271bd021e',
                         'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199875943de73d2807c7da7d0d639e5',
+                        'channelId' => $headlessChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
                 ],
@@ -203,6 +219,11 @@ class ProductBoostrap extends AbstractBootstrap
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
+                    [
+                        'id' => '01998759705c720a8bab2d9aedcaf6bf',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
                 ],
             ],
         ];
@@ -215,6 +236,21 @@ class ProductBoostrap extends AbstractBootstrap
             FROM `channel`
             WHERE `type_id` = :fontend_type
         ', ['fontend_type' => Uuid::fromHexToBytes(Defaults::CHANNEL_TYPE_FRONTEND)]);
+
+        if ($result === false) {
+            throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
+        }
+
+        return (string) $result;
+    }
+
+    private function getHeadlessChannel(): string
+    {
+        $result = $this->connection->fetchOne('
+            SELECT LOWER(HEX(`id`))
+            FROM `channel`
+            WHERE `type_id` = :fontend_type
+        ', ['fontend_type' => Uuid::fromHexToBytes(Defaults::CHANNEL_TYPE_API)]);
 
         if ($result === false) {
             throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
