@@ -4,6 +4,7 @@ namespace Hey\PlatformDemoData;
 
 use Hey\PlatformDemoData\Bootstrap\AbstractBootstrap;
 use Hey\PlatformDemoData\Bootstrap\CategoryBoostrap;
+use Hey\PlatformDemoData\Bootstrap\ChannelBoostrap;
 use Hey\PlatformDemoData\Bootstrap\CmsPageBoostrap;
 use Hey\PlatformDemoData\Bootstrap\CustomerBoostrap;
 use Hey\PlatformDemoData\Bootstrap\DomainBoostrap;
@@ -45,6 +46,7 @@ class HeyPlatformDemoData extends Plugin
         \assert($this->container instanceof ContainerInterface, 'Container is not set yet, please call setContainer() before calling boot(), see `platform/Core/Kernel.php:186`.');
         /** @var AbstractBootstrap[] $bootstrapper */
         $bootstrapper = [
+            new ChannelBoostrap(),
             new MediaBoostrap(),
             //            new CmsPageBoostrap(),
             new DomainBoostrap(),

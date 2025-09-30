@@ -16,8 +16,6 @@ use HeyFrame\Core\Test\TestDefaults;
  */
 class CustomerBoostrap extends AbstractBootstrap
 {
-    final public const HASHED_PASSWORD = '$2y$10$.4fj92PVZTlr/W7.0CF0ROLONadJe29xTIHfK8ofX5fg.Xd2BV5j2';
-
     private TranslationHelper $translationHelper;
 
     private Connection $connection;
@@ -107,7 +105,7 @@ class CustomerBoostrap extends AbstractBootstrap
                 'id' => '6c97534c2c0747f39e8751e43cb2b013',
                 'channelId' => $channelId,
                 'customerNumber' => '1000200000022',
-                'nickname' => '清风徐来(带收获地址)',
+                'nickname' => '清风徐来',
                 'password' => TestDefaults::HASHED_PASSWORD,
                 'email' => 'test@test.com',
                 'active' => true,
@@ -130,7 +128,7 @@ class CustomerBoostrap extends AbstractBootstrap
         ', ['fontend_type' => Uuid::fromHexToBytes(Defaults::CHANNEL_TYPE_FRONTEND)]);
 
         if ($result === false) {
-            throw new \RuntimeException('No tax found, please make sure that basic data is available by running the migrations.');
+            throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
         }
 
         return (string) $result;

@@ -249,7 +249,7 @@ class ProductBoostrap extends AbstractBootstrap
             throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string)$result;
+        return (string) $result;
     }
 
     private function getHeadlessChannel(): string
@@ -264,6 +264,6 @@ class ProductBoostrap extends AbstractBootstrap
             throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string)$result;
+        return (string) $result;
     }
 }
