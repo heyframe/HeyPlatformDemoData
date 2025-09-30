@@ -45,7 +45,7 @@ class HeyPlatformDemoData extends Plugin
         \assert($this->container instanceof ContainerInterface, 'Container is not set yet, please call setContainer() before calling boot(), see `platform/Core/Kernel.php:186`.');
         /** @var AbstractBootstrap[] $bootstrapper */
         $bootstrapper = [
-            //            new MediaBoostrap(),
+            new MediaBoostrap(),
             //            new CmsPageBoostrap(),
             new DomainBoostrap(),
             new CategoryBoostrap(),

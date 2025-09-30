@@ -84,6 +84,14 @@ class ProductBoostrap extends AbstractBootstrap
                         'id' => '01998723f6187075b5cb80b9f517037a',
                     ],
                 ],
+                'media' => [
+                    [
+                        'id' => '11dc680240b04f469ccba354cbf0b967',
+                        'position' => 1,
+                        'mediaId' => '11dc680240b04f469ccba354cbf0b967',
+                    ],
+                ],
+                'coverId' => '11dc680240b04f469ccba354cbf0b967',
                 'price' => [[
                     'gross' => 950,
                     'currencyId' => Defaults::CURRENCY,
@@ -241,7 +249,7 @@ class ProductBoostrap extends AbstractBootstrap
             throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string) $result;
+        return (string)$result;
     }
 
     private function getHeadlessChannel(): string
@@ -256,6 +264,6 @@ class ProductBoostrap extends AbstractBootstrap
             throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string) $result;
+        return (string)$result;
     }
 }

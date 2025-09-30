@@ -40,43 +40,7 @@ class MediaBoostrap extends AbstractBootstrap
 
         return [
             [
-                'id' => 'de4b7dbe9d95435092cb85ce146ced28',
-                'mediaFolderId' => $cmsFolder,
-            ],
-            [
-                'id' => '84356a71233d4b3e9f417dcc8850c82f',
-                'mediaFolderId' => $productFolder,
-            ],
-            [
-                'id' => '01969ce27621706288b81b3f3d1db607',
-                'mediaFolderId' => $productFolder,
-            ],
-            [
-                'id' => '01969ce6bfc17264ab7938fe729442cc',
-                'mediaFolderId' => $productFolder,
-            ],
-            [
-                'id' => '019787a21bcf720594e1408a1d8361b2',
-                'mediaFolderId' => $productFolder,
-            ],
-            [
-                'id' => '019787c4feab7373994867e7a55896b5',
-                'mediaFolderId' => $productFolder,
-            ],
-            [
-                'id' => '019787c7d22b71de80037e5629f2536c',
-                'mediaFolderId' => $productFolder,
-            ],
-            [
-                'id' => '019787cfd2be71278f4db3a453a280bf',
-                'mediaFolderId' => $productFolder,
-            ],
-            [
-                'id' => '019787d0c21172109a1dfe3ba67e9270',
-                'mediaFolderId' => $productFolder,
-            ],
-            [
-                'id' => '019787d18d2b71d68f62fd7fc06bd86c',
+                'id' => '11dc680240b04f469ccba354cbf0b967',
                 'mediaFolderId' => $productFolder,
             ],
         ];
