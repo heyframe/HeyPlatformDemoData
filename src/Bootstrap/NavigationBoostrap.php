@@ -67,8 +67,20 @@ class NavigationBoostrap extends AbstractBootstrap
                         'visible' => true,
                         'type' => 'page',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '应用商店',
-                            'en-GB' => 'App store',
+                            'zh-CN' => '插件',
+                            'en-GB' => 'Plugins',
+                        ]),
+                    ],
+                    [
+                        'id' => '019998d56bb070b3a54a492c20873c05',
+                        'afterNavigationId' => '77b959cf66de4c1590c7f9b7da3982f3',
+                        'cmsPageId' => $cmsPageId,
+                        'active' => true,
+                        'visible' => true,
+                        'type' => 'page',
+                        'name' => $this->translationHelper->adjustTranslations([
+                            'zh-CN' => '主题',
+                            'en-GB' => ' Themes',
                         ]),
                     ],
                     [
@@ -77,7 +89,7 @@ class NavigationBoostrap extends AbstractBootstrap
                         'active' => true,
                         'visible' => true,
                         'type' => 'page',
-                        'afterNavigationId' => '77b959cf66de4c1590c7f9b7da3982f3',
+                        'afterNavigationId' => '019998d56bb070b3a54a492c20873c05',
                         'name' => $this->translationHelper->adjustTranslations([
                             'zh-CN' => '演示',
                             'en-GB' => 'Demos',
@@ -346,7 +358,7 @@ class NavigationBoostrap extends AbstractBootstrap
             return;
         }
 
-        $deletePayload = array_map(fn ($id) => ['id' => $id], $childIds);
+        $deletePayload = array_map(fn($id) => ['id' => $id], $childIds);
 
         $this->navigationRepository->delete($deletePayload, $context);
     }
@@ -383,7 +395,7 @@ class NavigationBoostrap extends AbstractBootstrap
             throw new \RuntimeException('No tax found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string) $result;
+        return (string)$result;
     }
 
     private function getRootNavigationId(): string
