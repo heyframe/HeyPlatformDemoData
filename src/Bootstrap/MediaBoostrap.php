@@ -43,6 +43,10 @@ class MediaBoostrap extends AbstractBootstrap
                 'id' => '11dc680240b04f469ccba354cbf0b967',
                 'mediaFolderId' => $productFolder,
             ],
+            [
+                'id' => '0199a54ccb1373ef8dadaa5e80d271b1',
+                'mediaFolderId' => $productFolder,
+            ],
         ];
     }
 
@@ -119,6 +123,6 @@ class MediaBoostrap extends AbstractBootstrap
             throw new \RuntimeException('No default folder for entity "' . $entity . '" found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string) $result;
+        return (string)$result;
     }
 }

@@ -234,6 +234,45 @@ class ProductBoostrap extends AbstractBootstrap
                     ],
                 ],
             ],
+            [
+                'id' => '0199a54ccb1373ef8dadaa5e80d271b1',
+                'productNumber' => 'HYDEMO100050167',
+                'active' => true,
+                'stock' => 10,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => 'Uniapp 开发模版',
+                    'en-GB' => 'Uniapp develop template',
+                ]),
+                'media' => [
+                    [
+                        'id' => '0199a54ccb1373ef8dadaa5e80d271b1',
+                        'position' => 1,
+                        'mediaId' => '0199a54ccb1373ef8dadaa5e80d271b1',
+                    ],
+                ],
+                'coverId' => '0199a54ccb1373ef8dadaa5e80d271b1',
+                'categories' => [
+                    [
+                        'id' => '019987277ecc7313adca2244ba00150d',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 699,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199a54d57de70a191eb28e000c19cba',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199a54d6982709b92953a491fd3aff7',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -249,7 +288,7 @@ class ProductBoostrap extends AbstractBootstrap
             throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string) $result;
+        return (string)$result;
     }
 
     private function getHeadlessChannel(): string
@@ -264,6 +303,6 @@ class ProductBoostrap extends AbstractBootstrap
             throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string) $result;
+        return (string)$result;
     }
 }
