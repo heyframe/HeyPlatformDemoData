@@ -358,7 +358,7 @@ class NavigationBoostrap extends AbstractBootstrap
             return;
         }
 
-        $deletePayload = array_map(fn($id) => ['id' => $id], $childIds);
+        $deletePayload = array_map(fn ($id) => ['id' => $id], $childIds);
 
         $this->navigationRepository->delete($deletePayload, $context);
     }
@@ -392,10 +392,10 @@ class NavigationBoostrap extends AbstractBootstrap
         ', ['fontend_type' => Uuid::fromHexToBytes(Defaults::CHANNEL_TYPE_FRONTEND)]);
 
         if ($result === false) {
-            throw new \RuntimeException('No tax found, please make sure that basic data is available by running the migrations.');
+            throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string)$result;
+        return (string) $result;
     }
 
     private function getRootNavigationId(): string
