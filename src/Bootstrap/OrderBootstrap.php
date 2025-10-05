@@ -146,7 +146,7 @@ class OrderBootstrap extends AbstractBootstrap
     }
 
     /**
-     * @param array<string> orderState
+     * @param array<string> $orderState
      * @param array<string> $payState
      */
     private function createOrder(string $customerId, LineItemCollection $items, array $orderState = [], array $payState = []): void
