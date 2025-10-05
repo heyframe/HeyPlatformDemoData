@@ -293,7 +293,7 @@ class ProductBootstrap extends AbstractBootstrap
                 ]],
                 'visibilities' => [
                     [
-                        'id' => '0199b35f066b727580a20e372242a142',
+                        'id' => '0199b4c83d61723ab5ecc676d3db6209',
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
@@ -324,7 +324,7 @@ class ProductBootstrap extends AbstractBootstrap
                 ]],
                 'visibilities' => [
                     [
-                        'id' => '0199b363f7eb73ea96f2090ec8861526',
+                        'id' => '0199b4c822f672c6bf87db8797e6f4c9',
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
@@ -355,7 +355,7 @@ class ProductBootstrap extends AbstractBootstrap
                 ]],
                 'visibilities' => [
                     [
-                        'id' => '0199b365c4b3732396a201a49fb8eab5',
+                        'id' => '0199b4c80ee170258958d15cad94e7a4',
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
@@ -386,7 +386,7 @@ class ProductBootstrap extends AbstractBootstrap
                 ]],
                 'visibilities' => [
                     [
-                        'id' => '0199b3682dc672cba8ab8bd78327e613',
+                        'id' => '0199b4c7f7e473a7a9c457a7ba83eb77',
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
@@ -417,7 +417,7 @@ class ProductBootstrap extends AbstractBootstrap
                 ]],
                 'visibilities' => [
                     [
-                        'id' => '0199b36be2b77259a72ebf67845ca4c8',
+                        'id' => '0199b4c7dc127305b45ce7b324cbd572',
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
@@ -448,7 +448,7 @@ class ProductBootstrap extends AbstractBootstrap
                 ]],
                 'visibilities' => [
                     [
-                        'id' => '0199b36e20c8719d842eae59ff95408b',
+                        'id' => '0199b4c7c2627018af4eca77e8458647',
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
@@ -479,7 +479,7 @@ class ProductBootstrap extends AbstractBootstrap
                 ]],
                 'visibilities' => [
                     [
-                        'id' => '0199b36f8bbe72a0925f41d601ffd9b1',
+                        'id' => '0199b4c7a6eb72a890159df45ae4c74a',
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
@@ -515,7 +515,7 @@ class ProductBootstrap extends AbstractBootstrap
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
                     [
-                        'id' => '0199b3729b3270e6814a802371089892',
+                        'id' => '0199b4c78ac473f1bddba4db41946b93',
                         'channelId' => $headlessChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
@@ -546,7 +546,7 @@ class ProductBootstrap extends AbstractBootstrap
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
                     [
-                        'id' => '0199b377313c7388be973db263d5c7d9',
+                        'id' => '0199b4c77348730195d5cf34e647b817',
                         'channelId' => $headlessChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
@@ -572,12 +572,12 @@ class ProductBootstrap extends AbstractBootstrap
                 ]],
                 'visibilities' => [
                     [
-                        'id' => '0199b378412271dabcccfe59503d8873',
+                        'id' => '0199b4c72a2173c2a00cceb76df8e391',
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
                     [
-                        'id' => '0199b378412271dabcccfe59503d8873',
+                        'id' => '0199b4c73e2170dca570cd8a59f47fa2',
                         'channelId' => $headlessChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
@@ -603,12 +603,12 @@ class ProductBootstrap extends AbstractBootstrap
                 ]],
                 'visibilities' => [
                     [
-                        'id' => '0199b379822971f79ad6187191f4c289',
+                        'id' => '0199b4c6fba171ec834a8d0ae501fe80',
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
                     [
-                        'id' => '0199b379822971f79ad6187191f4c289',
+                        'id' => '0199b4c70f1c718584dc5683f76bc28a',
                         'channelId' => $headlessChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
@@ -634,12 +634,12 @@ class ProductBootstrap extends AbstractBootstrap
                 ]],
                 'visibilities' => [
                     [
-                        'id' => '0199b37b4a38714abf2ddeb635fa6134',
+                        'id' => '0199b4c5a9cc7222b531808c03bdd948',
                         'channelId' => $fontendChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],
                     [
-                        'id' => '0199b37b4a38714abf2ddeb635fa6134',
+                        'id' => '0199b4c5bef3726ea66012681a9de605',
                         'channelId' => $headlessChannel,
                         'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
                     ],

@@ -10,7 +10,9 @@ use Hey\PlatformDemoData\Bootstrap\CustomerBootstrap;
 use Hey\PlatformDemoData\Bootstrap\DomainBootstrap;
 use Hey\PlatformDemoData\Bootstrap\MediaBootstrap;
 use Hey\PlatformDemoData\Bootstrap\NavigationBootstrap;
+use Hey\PlatformDemoData\Bootstrap\OrderBootstrap;
 use Hey\PlatformDemoData\Bootstrap\ProductBootstrap;
+use Hey\PlatformDemoData\Bootstrap\PromotionBoostrap;
 use Hey\PlatformDemoData\Bootstrap\PropertyBootstrap;
 use Hey\PlatformDemoData\Bootstrap\RuleBootstrap;
 use HeyFrame\Core\Framework\Plugin;
@@ -56,6 +58,8 @@ class HeyPlatformDemoData extends Plugin
             new RuleBootstrap(),
             new PropertyBootstrap(),
             new ProductBootstrap(),
+            new PromotionBoostrap(),
+            new OrderBootstrap(),
         ];
         foreach ($bootstrapper as $bootstrap) {
             $bootstrap->setInstallContext($context);

@@ -3,21 +3,19 @@
 namespace Hey\PlatformDemoData\Bootstrap;
 
 use Doctrine\DBAL\Connection;
+use HeyFrame\Core\Checkout\Cart\Channel\CartService;
 use HeyFrame\Core\Checkout\Cart\LineItem\LineItem;
-use HeyFrame\Core\Checkout\Cart\Price\Struct\CartPrice;
-use HeyFrame\Core\Checkout\Customer\CustomerEntity;
+use HeyFrame\Core\Checkout\Cart\LineItem\LineItemCollection;
 use HeyFrame\Core\Checkout\Order\OrderCollection;
-use HeyFrame\Core\Checkout\Order\OrderStates;
 use HeyFrame\Core\Checkout\Payment\PaymentMethodCollection;
 use HeyFrame\Core\Defaults;
 use HeyFrame\Core\Framework\DataAbstractionLayer\EntityRepository;
-use HeyFrame\Core\Framework\DataAbstractionLayer\Pricing\CashRoundingConfig;
 use HeyFrame\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use HeyFrame\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use HeyFrame\Core\Framework\Uuid\Uuid;
-use HeyFrame\Core\System\Channel\ChannelContext;
+use HeyFrame\Core\Framework\Validation\DataBag\RequestDataBag;
 use HeyFrame\Core\System\Channel\Context\ChannelContextFactory;
-use HeyFrame\Core\System\StateMachine\Loader\InitialStateIdLoader;
+use HeyFrame\Core\System\Channel\Context\ChannelContextService;
 
 /**
  * @internal
@@ -29,42 +27,95 @@ class OrderBootstrap extends AbstractBootstrap
      */
     private EntityRepository $orderRepository;
 
-    private ChannelContext $channelContext;
+    private CartService $cartService;
 
     public function injectServices(): void
     {
         $this->orderRepository = $this->container->get('order.repository');
-        /** @var ChannelContextFactory $channelContextFactory */
-        $channelContextFactory = $this->container->get(ChannelContextFactory::class);
-        $this->channelContext = $channelContextFactory->create(
-            Uuid::randomHex(),
-            $this->getFrontendChannel()
-        );
+        $this->cartService = $this->container->get(CartService::class);
     }
 
     public function install(): void
     {
-        // TODO: Implement install() method.
+        $this->createOrder('0199b3a6ced273dd901d84889c704922', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '11dc680240b04f469ccba354cbf0b967'),
+        ]));
+        $this->createOrder('0199b3a6b9d67217979f383168295497', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b379822971f79ad6187191f4c289'),
+        ]));
+        $this->createOrder('0199b3a6a80f73f48764452984296c67', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b379822971f79ad6187191f4c289'),
+        ]));
+        $this->createOrder('0199b3a67f2870e5bed23aa788dbc230', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b378412271dabcccfe59503d8873'),
+        ]));
+        $this->createOrder('0199b3a6924e736f93681e39b68e22f9', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b377313c7388be973db263d5c7d9'),
+        ]));
+        $this->createOrder('0199b3a66712704a99f2dc528c79d3f0', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b3729b3270e6814a802371089892'),
+        ]));
+        $this->createOrder('0199b3a65195718cae874a8f77fb98f1', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b36f8bbe72a0925f41d601ffd9b1'),
+        ]));
+        $this->createOrder('0199b3a63c3172b1b7f68ae92fbf7544', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b36e20c8719d842eae59ff95408b'),
+        ]));
+        $this->createOrder('0199b3a6262e728aa60100082abbba8f', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b36be2b77259a72ebf67845ca4c8'),
+        ]));
+        $this->createOrder('0199b3a60e5d73458bf6aeea1f07417d', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b3682dc672cba8ab8bd78327e613'),
+        ]));
+        $this->createOrder('0199b3a5fddc7198a0964b18800b58cb', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b365c4b3732396a201a49fb8eab5'),
+        ]));
+        $this->createOrder('0199b3a5e2ef73c9bac531686e697ba3', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b363f7eb73ea96f2090ec8861526'),
+        ]));
+        $this->createOrder('0199b3a54888730d9eacd902362af182', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199b35f066b727580a20e372242a142'),
+        ]));
+        $this->createOrder('0199b3a537387364af50dc713f7622b9', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199a54ccb1373ef8dadaa5e80d271b1'),
+        ]));
+        $this->createOrder('0199b3a51e5d7103a12c4df5ed98188c', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199555fc844736f820726d460521d60'),
+        ]));
+        $this->createOrder('0199b3a507ca725a87dbef99d7c0ae5c', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199555d62ee701b8fe211a6b96a062c'),
+        ]));
+        $this->createOrder('0199b3a4f6dc70e196847fd734265e9c', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199527b924070a2b8e6614df8e09675'),
+        ]));
+        $this->createOrder('0199b3a4e56273fe9fbeacd005499452', new LineItemCollection([
+            new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '11dc680240b04f469ccba354cbf0b967'),
+        ]));
     }
 
     public function update(): void
     {
-        // TODO: Implement update() method.
     }
 
     public function uninstall(bool $keepUserData = false): void
     {
-        // TODO: Implement uninstall() method.
+        $criteria = new Criteria();
+        $criteria->addFilter(new EqualsFilter('extraFields.is_demo_data', 'true'));
+
+        $orderIds = $this->orderRepository->searchIds($criteria, $this->installContext->getContext())->getIds();
+
+        if (!empty($orderIds)) {
+            $deletePayload = array_map(fn (string $id) => ['id' => $id], $orderIds);
+            $this->orderRepository->delete($deletePayload, $this->installContext->getContext());
+        }
     }
 
     public function activate(): void
     {
-        // TODO: Implement activate() method.
     }
 
     public function deactivate(): void
     {
-        // TODO: Implement deactivate() method.
     }
 
     protected function getValidPaymentMethodId(?string $channelId = null): string
@@ -86,49 +137,30 @@ class OrderBootstrap extends AbstractBootstrap
         return $id;
     }
 
-    /**
-     * @param array<string|int, mixed> $items
-     *
-     * @return array<string,mixed>
-     */
-    private function getOrderData(string $orderId, string $customerId, array $items): array
+    private function createOrder(string $customerId, LineItemCollection $items): void
     {
-        /** @var CustomerEntity $customer */
-        $customer = $this->container->get('customer.repository')->search(new Criteria([$customerId]), $this->installContext->getContext());
-        $lineItems = [];
-        foreach ($items as $item) {
-            $type = $item['type'];
-            if ($type === LineItem::PRODUCT_LINE_ITEM_TYPE) {
-                $product = $this->container->get('channel.product.repository')->search(new Criteria([$item['referencedId']]), $this->channelContext);
-                $lineItems[] = [
-                    'id' => $item['referencedId'],
-                    'referenceId' => $item['referencedId'],
-                    'type' => $item['type'],
-                ];
-            }
-        }
+        /** @var ChannelContextFactory $channelContextFactory */
+        $channelContextFactory = $this->container->get(ChannelContextFactory::class);
+        $token = Uuid::randomHex();
+        $channelContext = $channelContextFactory->create(
+            $token,
+            $this->getFrontendChannel(),
+            [
+                ChannelContextService::CUSTOMER_ID => $customerId,
+            ]
+        );
 
-        return [
+        $cart = $this->cartService->createNew($token);
+        $cart->addLineItems($items);
+
+        $orderId = $this->cartService->order($cart, $channelContext, new RequestDataBag());
+
+        $this->orderRepository->update([[
             'id' => $orderId,
-            'itemRounding' => json_decode(json_encode(new CashRoundingConfig(2, 0.01, true), \JSON_THROW_ON_ERROR), true, 512, \JSON_THROW_ON_ERROR),
-            'totalRounding' => json_decode(json_encode(new CashRoundingConfig(2, 0.01, true), \JSON_THROW_ON_ERROR), true, 512, \JSON_THROW_ON_ERROR),
-            'orderDateTime' => (new \DateTimeImmutable())->format(Defaults::STORAGE_DATE_TIME_FORMAT),
-            'price' => new CartPrice(0, 0, 0),
-            'stateId' => $this->container->get(InitialStateIdLoader::class)->get(OrderStates::STATE_MACHINE),
-            'paymentMethodId' => $this->getValidPaymentMethodId(),
-            'currencyId' => Defaults::CURRENCY,
-            'currencyFactor' => 1,
-            'channelId' => $customer->getChannelId(),
-            'lineItems' => $lineItems,
-            'orderCustomer' => [
-                'id' => $orderId,
-                'email' => $customer->getEmail(),
-                'nickname' => $customer->getNickname(),
-                'name' => $customer->getName(),
-                'customerNumber' => $customer->getCustomerNumber(),
-                'customerId' => $customer->getId(),
+            'extraFields' => [
+                'is_demo_data' => true,
             ],
-        ];
+        ]], $this->installContext->getContext());
     }
 
     private function getFrontendChannel(): string
