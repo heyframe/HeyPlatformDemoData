@@ -6,7 +6,9 @@ use Doctrine\DBAL\Connection;
 use HeyFrame\Core\Checkout\Cart\Channel\CartService;
 use HeyFrame\Core\Checkout\Cart\LineItem\LineItem;
 use HeyFrame\Core\Checkout\Cart\LineItem\LineItemCollection;
+use HeyFrame\Core\Checkout\Order\Api\OrderActionController;
 use HeyFrame\Core\Checkout\Order\OrderCollection;
+use HeyFrame\Core\Checkout\Order\OrderEntity;
 use HeyFrame\Core\Checkout\Payment\PaymentMethodCollection;
 use HeyFrame\Core\Defaults;
 use HeyFrame\Core\Framework\DataAbstractionLayer\EntityRepository;
@@ -16,6 +18,9 @@ use HeyFrame\Core\Framework\Uuid\Uuid;
 use HeyFrame\Core\Framework\Validation\DataBag\RequestDataBag;
 use HeyFrame\Core\System\Channel\Context\ChannelContextFactory;
 use HeyFrame\Core\System\Channel\Context\ChannelContextService;
+use Symfony\Component\HttpFoundation\Request;
+
+use function PHPUnit\Framework\assertNotNull;
 
 /**
  * @internal
@@ -29,10 +34,13 @@ class OrderBootstrap extends AbstractBootstrap
 
     private CartService $cartService;
 
+    private OrderActionController $orderActionController;
+
     public function injectServices(): void
     {
         $this->orderRepository = $this->container->get('order.repository');
         $this->cartService = $this->container->get(CartService::class);
+        $this->orderActionController = $this->container->get(OrderActionController::class);
     }
 
     public function install(): void
@@ -78,7 +86,7 @@ class OrderBootstrap extends AbstractBootstrap
         ]));
         $this->createOrder('0199b3a537387364af50dc713f7622b9', new LineItemCollection([
             new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199a54ccb1373ef8dadaa5e80d271b1'),
-        ]));
+        ]), ['process', 'complete'], ['process', 'paid']);
         $this->createOrder('0199b3a51e5d7103a12c4df5ed98188c', new LineItemCollection([
             new LineItem(Uuid::randomHex(), LineItem::PRODUCT_LINE_ITEM_TYPE, '0199555fc844736f820726d460521d60'),
         ]));
@@ -137,7 +145,11 @@ class OrderBootstrap extends AbstractBootstrap
         return $id;
     }
 
-    private function createOrder(string $customerId, LineItemCollection $items): void
+    /**
+     * @param array<string> orderState
+     * @param array<string> $payState
+     */
+    private function createOrder(string $customerId, LineItemCollection $items, array $orderState = [], array $payState = []): void
     {
         /** @var ChannelContextFactory $channelContextFactory */
         $channelContextFactory = $this->container->get(ChannelContextFactory::class);
@@ -161,6 +173,27 @@ class OrderBootstrap extends AbstractBootstrap
                 'is_demo_data' => true,
             ],
         ]], $this->installContext->getContext());
+
+        if (\count($orderState) > 0) {
+            foreach ($orderState as $value) {
+                $this->orderActionController->orderStateTransition($orderId, $value, new Request(), $this->installContext->getContext());
+            }
+        }
+
+        if (\count($payState) > 0) {
+            $criteria = new Criteria([$orderId]);
+            $criteria->addAssociation('primaryOrderTransaction');
+            /** @var OrderEntity|null $order */
+            $order = $this->orderRepository->search($criteria, $this->installContext->getContext())->first();
+            assertNotNull($order);
+            foreach ($payState as $value) {
+                $orderTransaction = $order->getPrimaryOrderTransaction();
+                if ($orderTransaction === null) {
+                    return;
+                }
+                $this->orderActionController->orderTransactionStateTransition($orderTransaction->getId(), $value, new Request(), $this->installContext->getContext());
+            }
+        }
     }
 
     private function getFrontendChannel(): string
