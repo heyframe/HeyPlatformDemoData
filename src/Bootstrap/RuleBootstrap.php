@@ -9,7 +9,7 @@ use HeyFrame\Core\Framework\DataAbstractionLayer\EntityRepository;
 /**
  * @internal
  */
-class RuleBoostrap extends AbstractBootstrap
+class RuleBootstrap extends AbstractBootstrap
 {
     private Connection $connection;
 

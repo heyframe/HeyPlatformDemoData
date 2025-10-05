@@ -13,7 +13,7 @@ use HeyFrame\Core\Framework\Uuid\Uuid;
 /**
  * @internal
  */
-class ProductBoostrap extends AbstractBootstrap
+class ProductBootstrap extends AbstractBootstrap
 {
     private Connection $connection;
 

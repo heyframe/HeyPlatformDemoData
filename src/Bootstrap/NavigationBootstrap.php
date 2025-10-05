@@ -17,7 +17,7 @@ use HeyFrame\Core\System\Channel\ChannelCollection;
 /**
  * @internal
  */
-class NavigationBoostrap extends AbstractBootstrap
+class NavigationBootstrap extends AbstractBootstrap
 {
     /**
      * @var EntityRepository<NavigationCollection>

@@ -9,7 +9,7 @@ use HeyFrame\Core\Framework\DataAbstractionLayer\EntityRepository;
 use HeyFrame\Core\Framework\Uuid\Uuid;
 use HeyFrame\Core\System\Channel\ChannelCollection;
 
-class ChannelBoostrap extends AbstractBootstrap
+class ChannelBootstrap extends AbstractBootstrap
 {
     final public const ACCESS_KEY = 'SWSCEGPJS0LVTMPRCVBZS2WYBA';
 

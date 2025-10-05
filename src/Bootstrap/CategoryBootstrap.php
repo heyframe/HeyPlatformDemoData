@@ -7,7 +7,7 @@ use Hey\PlatformDemoData\Helper\TranslationHelper;
 use HeyFrame\Core\Content\Category\CategoryCollection;
 use HeyFrame\Core\Framework\DataAbstractionLayer\EntityRepository;
 
-class CategoryBoostrap extends AbstractBootstrap
+class CategoryBootstrap extends AbstractBootstrap
 {
     /**
      * @var EntityRepository<CategoryCollection>

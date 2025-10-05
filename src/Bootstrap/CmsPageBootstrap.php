@@ -10,7 +10,7 @@ use HeyFrame\Core\Framework\DataAbstractionLayer\EntityRepository;
 /**
  * @internal
  */
-class CmsPageBoostrap extends AbstractBootstrap
+class CmsPageBootstrap extends AbstractBootstrap
 {
     private TranslationHelper $translationHelper;
 

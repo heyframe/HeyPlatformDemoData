@@ -12,7 +12,7 @@ use HeyFrame\Core\Framework\DataAbstractionLayer\EntityRepository;
 /**
  * @internal
  */
-class MediaBoostrap extends AbstractBootstrap
+class MediaBootstrap extends AbstractBootstrap
 {
     private FileSaver $fileSaver;
 

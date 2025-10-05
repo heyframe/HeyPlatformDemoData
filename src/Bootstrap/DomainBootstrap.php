@@ -17,7 +17,7 @@ use HeyFrame\Core\System\Channel\Aggregate\ChannelDomain\ChannelDomainCollection
 /**
  * @internal
  */
-class DomainBoostrap extends AbstractBootstrap
+class DomainBootstrap extends AbstractBootstrap
 {
     private Connection $connection;
 

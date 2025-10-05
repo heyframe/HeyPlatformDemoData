@@ -11,7 +11,7 @@ use HeyFrame\Core\Framework\DataAbstractionLayer\EntityRepository;
 /**
  * @internal
  */
-class PropertyBoostrap extends AbstractBootstrap
+class PropertyBootstrap extends AbstractBootstrap
 {
     private TranslationHelper $translationHelper;
 

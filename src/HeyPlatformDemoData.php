@@ -3,16 +3,16 @@
 namespace Hey\PlatformDemoData;
 
 use Hey\PlatformDemoData\Bootstrap\AbstractBootstrap;
-use Hey\PlatformDemoData\Bootstrap\CategoryBoostrap;
-use Hey\PlatformDemoData\Bootstrap\ChannelBoostrap;
-use Hey\PlatformDemoData\Bootstrap\CmsPageBoostrap;
-use Hey\PlatformDemoData\Bootstrap\CustomerBoostrap;
-use Hey\PlatformDemoData\Bootstrap\DomainBoostrap;
-use Hey\PlatformDemoData\Bootstrap\MediaBoostrap;
-use Hey\PlatformDemoData\Bootstrap\NavigationBoostrap;
-use Hey\PlatformDemoData\Bootstrap\ProductBoostrap;
-use Hey\PlatformDemoData\Bootstrap\PropertyBoostrap;
-use Hey\PlatformDemoData\Bootstrap\RuleBoostrap;
+use Hey\PlatformDemoData\Bootstrap\CategoryBootstrap;
+use Hey\PlatformDemoData\Bootstrap\ChannelBootstrap;
+use Hey\PlatformDemoData\Bootstrap\CmsPageBootstrap;
+use Hey\PlatformDemoData\Bootstrap\CustomerBootstrap;
+use Hey\PlatformDemoData\Bootstrap\DomainBootstrap;
+use Hey\PlatformDemoData\Bootstrap\MediaBootstrap;
+use Hey\PlatformDemoData\Bootstrap\NavigationBootstrap;
+use Hey\PlatformDemoData\Bootstrap\ProductBootstrap;
+use Hey\PlatformDemoData\Bootstrap\PropertyBootstrap;
+use Hey\PlatformDemoData\Bootstrap\RuleBootstrap;
 use HeyFrame\Core\Framework\Plugin;
 use HeyFrame\Core\Framework\Plugin\Context\InstallContext;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -46,16 +46,16 @@ class HeyPlatformDemoData extends Plugin
         \assert($this->container instanceof ContainerInterface, 'Container is not set yet, please call setContainer() before calling boot(), see `platform/Core/Kernel.php:186`.');
         /** @var AbstractBootstrap[] $bootstrapper */
         $bootstrapper = [
-            new ChannelBoostrap(),
-            new MediaBoostrap(),
+            new ChannelBootstrap(),
+            new MediaBootstrap(),
             //            new CmsPageBoostrap(),
-            new DomainBoostrap(),
-            new CategoryBoostrap(),
-            new NavigationBoostrap(),
-            new CustomerBoostrap(),
-            new RuleBoostrap(),
-            new PropertyBoostrap(),
-            new ProductBoostrap(),
+            new DomainBootstrap(),
+            new CategoryBootstrap(),
+            new NavigationBootstrap(),
+            new CustomerBootstrap(),
+            new RuleBootstrap(),
+            new PropertyBootstrap(),
+            new ProductBootstrap(),
         ];
         foreach ($bootstrapper as $bootstrap) {
             $bootstrap->setInstallContext($context);

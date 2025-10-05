@@ -14,7 +14,7 @@ use HeyFrame\Core\Test\TestDefaults;
 /**
  * @internal
  */
-class CustomerBoostrap extends AbstractBootstrap
+class CustomerBootstrap extends AbstractBootstrap
 {
     private TranslationHelper $translationHelper;
 
