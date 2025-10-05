@@ -273,6 +273,378 @@ class ProductBoostrap extends AbstractBootstrap
                     ],
                 ],
             ],
+            [
+                'id' => '0199b35f066b727580a20e372242a142',
+                'productNumber' => 'HYSWDEMO100035004481',
+                'active' => true,
+                'stock' => 10,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '聚合支付',
+                    'en-GB' => 'Payment',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 999.99,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b35f066b727580a20e372242a142',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b35f066b727580a20e372242a142',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199b363f7eb73ea96f2090ec8861526',
+                'productNumber' => 'HYSWDEMO100035004482',
+                'active' => true,
+                'stock' => 10,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '营销 - 优惠卷、活动',
+                    'en-GB' => 'Marketing, Coupons & Promotions',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 100.99,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b363f7eb73ea96f2090ec8861526',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b363f7eb73ea96f2090ec8861526',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199b365c4b3732396a201a49fb8eab5',
+                'productNumber' => 'HYSWDEMO100035004483',
+                'active' => true,
+                'stock' => 10,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '客户身份登录',
+                    'en-GB' => 'Login as Customer',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 99.66,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b365c4b3732396a201a49fb8eab5',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b365c4b3732396a201a49fb8eab5',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199b3682dc672cba8ab8bd78327e613',
+                'productNumber' => 'HYSWDEMO100035004484',
+                'active' => true,
+                'stock' => 10,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '云存储',
+                    'en-GB' => 'Cloud Storage',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 88.88,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b3682dc672cba8ab8bd78327e613',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b3682dc672cba8ab8bd78327e613',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199b36be2b77259a72ebf67845ca4c8',
+                'productNumber' => 'HYSWDEMO100035004485',
+                'active' => true,
+                'stock' => 100,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '社交账号登录',
+                    'en-GB' => 'Login with Social Account',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 66,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b36be2b77259a72ebf67845ca4c8',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b36be2b77259a72ebf67845ca4c8',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199b36e20c8719d842eae59ff95408b',
+                'productNumber' => 'HYSWDEMO100035004486',
+                'active' => true,
+                'stock' => 9999,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '销售统计',
+                    'en-GB' => 'Sales Statistics',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 688,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b36e20c8719d842eae59ff95408b',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b36e20c8719d842eae59ff95408b',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199b36f8bbe72a0925f41d601ffd9b1',
+                'productNumber' => 'HYSWDEMO100035004487',
+                'active' => true,
+                'stock' => 9999,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '产品关联销售',
+                    'en-GB' => 'Cross-Selling',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 4899,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b36f8bbe72a0925f41d601ffd9b1',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b36f8bbe72a0925f41d601ffd9b1',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199b3729b3270e6814a802371089892',
+                'productNumber' => 'HYSWDEMO100035004488',
+                'active' => true,
+                'stock' => 9999,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => 'CMS 扩展',
+                    'en-GB' => 'CMS Extension',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 500,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b3729b3270e6814a802371089892',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b3729b3270e6814a802371089892',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199b377313c7388be973db263d5c7d9',
+                'productNumber' => 'HYSWDEMO100035004489',
+                'active' => true,
+                'stock' => 9999,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '系统工具',
+                    'en-GB' => 'System Tools',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 29.9,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b377313c7388be973db263d5c7d9',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b377313c7388be973db263d5c7d9',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199b378412271dabcccfe59503d8873',
+                'productNumber' => 'HYSWDEMO100035004490',
+                'active' => true,
+                'stock' => 9999,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '主题模版在线编辑器',
+                    'en-GB' => 'Online Theme Template Editor',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 109.99,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b378412271dabcccfe59503d8873',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b378412271dabcccfe59503d8873',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199b379822971f79ad6187191f4c289',
+                'productNumber' => 'HYSWDEMO100035004491',
+                'active' => true,
+                'stock' => 9999,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '博客',
+                    'en-GB' => 'Blog',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 209.99,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b379822971f79ad6187191f4c289',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b379822971f79ad6187191f4c289',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
+            [
+                'id' => '0199b37b4a38714abf2ddeb635fa6134',
+                'productNumber' => 'HYSWDEMO100035004492',
+                'active' => true,
+                'stock' => 6000,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '问答社区',
+                    'en-GB' => 'Q&A Community',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 1209.99,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199b37b4a38714abf2ddeb635fa6134',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199b37b4a38714abf2ddeb635fa6134',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -288,7 +660,7 @@ class ProductBoostrap extends AbstractBootstrap
             throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string)$result;
+        return (string) $result;
     }
 
     private function getHeadlessChannel(): string
@@ -303,6 +675,6 @@ class ProductBoostrap extends AbstractBootstrap
             throw new \RuntimeException('No channel found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string)$result;
+        return (string) $result;
     }
 }

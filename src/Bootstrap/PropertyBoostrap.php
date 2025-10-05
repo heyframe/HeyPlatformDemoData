@@ -75,36 +75,22 @@ class PropertyBoostrap extends AbstractBootstrap
                 'sortingType' => PropertyGroupDefinition::SORTING_TYPE_ALPHANUMERIC,
                 'displayType' => PropertyGroupDefinition::DISPLAY_TYPE_TEXT,
                 'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '存储容量',
-                    'en-GB' => 'Storage',
+                    'zh-CN' => '授权许可证',
+                    'en-GB' => 'License',
                 ]),
                 'options' => [
                     [
                         'id' => '78c53f3f6dd14eb4927978415bfb74db',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '64GB',
-                            'en-GB' => '64GB',
+                            'zh-CN' => '标准授权',
+                            'en-GB' => 'Regular License',
                         ]),
                     ],
                     [
                         'id' => '7cab88165ae5420f921232511b6e8f7d',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '128GB',
-                            'en-GB' => '128GB',
-                        ]),
-                    ],
-                    [
-                        'id' => '6f9359239c994b48b7de282ee19a714d',
-                        'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '256GB',
-                            'en-GB' => '256GB',
-                        ]),
-                    ],
-                    [
-                        'id' => '01969f947a727360a1d8f54b422ec287',
-                        'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '512GB',
-                            'en-GB' => '512GB',
+                            'zh-CN' => '高级授权',
+                            'en-GB' => 'Extended License',
                         ]),
                     ],
                 ],
@@ -114,32 +100,29 @@ class PropertyBoostrap extends AbstractBootstrap
                 'sortingType' => PropertyGroupDefinition::SORTING_TYPE_ALPHANUMERIC,
                 'displayType' => PropertyGroupDefinition::DISPLAY_TYPE_COLOR,
                 'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '颜色',
-                    'en-GB' => 'Colour',
+                    'zh-CN' => '语言',
+                    'en-GB' => 'Language',
                 ]),
                 'options' => [
                     [
                         'id' => '2bfd278e87204807a890da4a3e81dd90',
-                        'colorHexCode' => '#0000ffff',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '蓝色',
-                            'en-GB' => 'Blue',
+                            'zh-CN' => '中文',
+                            'en-GB' => 'Chinese',
                         ]),
                     ],
                     [
                         'id' => '52454db2adf942b2ac079a296f454a10',
-                        'colorHexCode' => '#ff0000ff',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '红色',
-                            'en-GB' => 'Red',
+                            'zh-CN' => '英文',
+                            'en-GB' => 'English',
                         ]),
                     ],
                     [
                         'id' => 'ad735af1ebfb421e93e408b073c4a89a',
-                        'colorHexCode' => '#ffffffff',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '白色',
-                            'en-GB' => 'White',
+                            'zh-CN' => '其他',
+                            'en-GB' => ' Other',
                         ]),
                     ],
                 ],
@@ -149,29 +132,29 @@ class PropertyBoostrap extends AbstractBootstrap
                 'sortingType' => PropertyGroupDefinition::SORTING_TYPE_ALPHANUMERIC,
                 'displayType' => PropertyGroupDefinition::DISPLAY_TYPE_TEXT,
                 'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => '内存',
-                    'en-GB' => 'RAM',
+                    'zh-CN' => '购买方式',
+                    'en-GB' => 'Pricing Type',
                 ]),
                 'options' => [
                     [
                         'id' => '22bdaee755804c1d8099c0d3696e852c',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '4GB',
-                            'en-GB' => '4GB',
+                            'zh-CN' => '免费',
+                            'en-GB' => 'Free',
                         ]),
                     ],
                     [
                         'id' => '327d6c0b12264d7bb479ee18eb66ab23',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '8GB',
-                            'en-GB' => '8GB',
+                            'zh-CN' => '购买',
+                            'en-GB' => 'Purchase',
                         ]),
                     ],
                     [
                         'id' => '34066fc5b043464caaaca5b1ec5aa233',
                         'name' => $this->translationHelper->adjustTranslations([
-                            'zh-CN' => '12GB',
-                            'en-GB' => '12GB',
+                            'zh-CN' => '订阅续费',
+                            'en-GB' => 'Subscription',
                         ]),
                     ],
                 ],
