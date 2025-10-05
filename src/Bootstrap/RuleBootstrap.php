@@ -72,12 +72,15 @@ class RuleBootstrap extends AbstractBootstrap
                 'priority' => 1,
                 'conditions' => [
                     [
+                        'id' => '0199b585648772709b5b05b27ff5c2ad',
                         'type' => 'orContainer',
                         'children' => [
                             [
+                                'id' => '0199b5853a0871519002104a3545ec2f',
                                 'type' => 'andContainer',
                                 'children' => [
                                     [
+                                        'id' => '0199b5859312704784606b665da74341',
                                         'type' => 'customerCustomerGroup',
                                         'value' => [
                                             'operator' => '=',
@@ -105,6 +108,6 @@ class RuleBootstrap extends AbstractBootstrap
             throw new \RuntimeException('No country for iso code "' . $iso . '" found, please make sure that basic data is available by running the migrations.');
         }
 
-        return (string) $result;
+        return (string)$result;
     }
 }
