@@ -56,8 +56,8 @@ class NavigationBootstrap extends AbstractBootstrap
                 'visible' => true,
                 'type' => 'page',
                 'name' => $this->translationHelper->adjustTranslations([
-                    'zh-CN' => 'HeyFrame 全栈开发，从未如此简单',
-                    'en-GB' => 'HeyFrame Full-Stack Development, Simplified',
+                    'zh-CN' => 'HeyFrame ｜ 极速开发，快速构建全栈应用',
+                    'en-GB' => 'HeyFrame ｜ Fast development, build full-stack apps in no time',
                 ]),
                 'children' => [
                     [
