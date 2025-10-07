@@ -350,8 +350,8 @@ class PromotionBoostrap extends AbstractBootstrap
         $result = $this->connection->fetchOne('
             SELECT LOWER(HEX(`id`))
             FROM `channel`
-            WHERE `type_id` = :storefront_type
-        ', ['storefront_type' => Uuid::fromHexToBytes(Defaults::CHANNEL_TYPE_FRONTEND)]);
+            WHERE `type_id` = :frontend_type
+        ', ['frontend_type' => Uuid::fromHexToBytes(Defaults::CHANNEL_TYPE_FRONTEND)]);
 
         if ($result === false) {
             throw new \RuntimeException('No tax found, please make sure that basic data is available by running the migrations.');
