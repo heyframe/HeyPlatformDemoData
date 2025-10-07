@@ -645,6 +645,37 @@ class ProductBootstrap extends AbstractBootstrap
                     ],
                 ],
             ],
+            [
+                'id' => '0199badc8c09702bb13c2a31a1fcacd8',
+                'productNumber' => 'HYSWDEMO100035004494',
+                'active' => true,
+                'stock' => 6000,
+                'name' => $this->translationHelper->adjustTranslations([
+                    'zh-CN' => '任务、悬赏',
+                    'en-GB' => 'Tasks & Rewards',
+                ]),
+                'categories' => [
+                    [
+                        'id' => '01998723f6187075b5cb80b9f517037a',
+                    ],
+                ],
+                'price' => [[
+                    'gross' => 2000,
+                    'currencyId' => Defaults::CURRENCY,
+                ]],
+                'visibilities' => [
+                    [
+                        'id' => '0199badcabec70399f954bf4116bdbf1',
+                        'channelId' => $fontendChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                    [
+                        'id' => '0199badc8c09702bb13c2a31a1fcacd8',
+                        'channelId' => $headlessChannel,
+                        'visibility' => ProductVisibilityDefinition::VISIBILITY_ALL,
+                    ],
+                ],
+            ],
         ];
     }
 
